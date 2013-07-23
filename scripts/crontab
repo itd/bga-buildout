@@ -1,0 +1,13 @@
+# crontab in kbendl user
+# make sure the thing is running
+*/30  *  *   *   *  /opt/sites/atotool/atotool-buildout/bin/zeoserver start > /dev/null 2>&1
+*/30  *  *   *   *  /opt/sites/atotool/atotool-buildout/bin/instance start > /dev/null 2>&1
+
+# Pack the HPC4 database weekly on Sunday night @ 11:30,
+# then do Backups/incrementals @ 1 am and pm
+30  23   *   *   0   /opt/sites/atotool/atotool-buildout/bin/zeopack > /dev/null 2>&1
+0  1,13  *   *   *   /opt/sites/atotool/atotool-buildout/bin/backup > /dev/null 2>&1
+
+### Run a script to tarball and copy the production files to
+### a local backup repo for quick recovery.
+01 12 * * * /opt/sites/atotool/atotool-buildout/scripts/plonesitebak.sh > /dev/null 2>&1 &

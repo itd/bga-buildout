@@ -1,0 +1,167 @@
+
+ build-essential libssl-dev libxml2-dev libxslt1-dev libbz2-dev zlib1g-dev python-dev python-distribute libjpeg62-dev libreadline-gplv2-dev python-imaging wv poppler-utils  libreadline5 libreadline5-dev readline-common
+
+
+
+
+
+#####################################################################
+######################  Installation Complete  ######################
+
+Use the account information below to log into the Zope Management Interface
+The account has full 'Manager' privileges.
+
+  Username: admin
+  Password: WlC2GQvT   enter2bga
+
+Before you start Plone, you should review the settings in:
+
+  /web/bga/Plone-2.5.5/zeocluster/server/etc/zeo.conf
+ and
+  /web/bga/Plone-2.5.5/zeocluster/client1/etc/zope.conf
+ and
+  /web/bga/Plone-2.5.5/zeocluster/client2/etc/zope.conf
+
+Adjust the ports Plone uses before starting the site, if necessary
+
+To start Plone, issue the following command in a Terminal window:
+
+  sudo /web/bga/Plone-2.5.5/zeocluster/bin/startcluster.sh
+
+To stop Plone, issue the following command in a Terminal window:
+
+  sudo /web/bga/Plone-2.5.5/zeocluster/bin/shutdowncluster.sh
+
+
+Plone successfully installed at /web/bga/Plone-2.5.5
+See /web/bga/Plone-2.5.5/adminPassword.txt for password and startup instructions
+
+Submit feedback and report errors at http://dev.plone.org/plone
+
+This installer is maintained by Kamal Gill
+
+
+
+%define INSTANCE /home2/ohtogo/webapps/zope/Zope
+%define ZOPE /home2/ohtogo/webapps/zope/Zope
+instancehome $INSTANCE
+<eventlog>
+  level all
+  <logfile>
+    path $INSTANCE/log/event.log
+    level info
+  </logfile>
+</eventlog>
+
+<logger access>
+  level WARN
+  <logfile>
+    path $INSTANCE/log/Z2.log
+    format %(message)s
+  </logfile>
+</logger>
+
+<http-server>
+   address 3516
+</http-server>
+  #<fast-cgi>
+  #  address /home2/ohtogo/webapps/zope/Zope/var/fastcgi.soc
+  #</fast-cgi>
+
+
+<zodb_db main>
+    # Main FileStorage database
+    <filestorage>
+      path $INSTANCE/var/Data.fs
+    </filestorage>
+    mount-point /
+</zodb_db>
+
+<zodb_db temporary>
+    # Temporary storage database (for sessions)
+    <temporarystorage>
+      name temporary storage for sessioning
+    </temporarystorage>
+    mount-point /temp_folder
+    container-class Products.TemporaryFolder.TemporaryContainer
+</zodb_db>
+
+<zodb_db goose>
+    # data.fs for bluegoose
+    mount-point /goose
+    <filestorage>
+        path $INSTANCE/var/goose/goose.fs
+    </filestorage>
+</zodb_db>
+
+squickinstaller
+==========================
+
+
+installed:
+-------------
+  ATContentTypes  1.1.1-final 1.1.1-final
+ATReferenceBrowserWidget    1.4
+  Archetypes  1.4.0-final 1.4.0-final
+  BlueGooseTheme  1.0 1.0
+CMFActionIcons    CMF-1.6.1
+CMFCalendar   CMF-1.6.1
+CMFFormController 2.0.4 2.0.4
+  CMFPlacefulWorkflow 1.0.0-final 1.0.0-final
+GroupUserFolder 3.52  3.52
+  MailmanSubForm  0.3 0.3
+  MimetypesRegistry 1.4.0-final 1.4.0-final
+  PasswordResetTool 0.4 0.4
+PlonePAS  2.0.1 2.0.1
+  PortalTransforms  1.4.0-final 1.4.0-final
+ResourceRegistries  1.3 1.3
+  kupu  kupu 1.3.7-plone  kupu 1.3.7-plone
+
+
+
+not installed
+---------------
+
+  Product Name    Version
+  AMCCTheme   1.0
+  ATWorkgroup   2.0.2
+  BBIBlueTheme    1.0
+  CMFSquidTool    1.3.0
+  CNETheme    2.1.1
+  CacheSetup    1.0
+  LeagueHoodStyle   1.0
+  Marshall    0.6.5-final
+  NMWildTheme   1.0
+  ORWildTheme   1.0
+  PloneErrorReporting   0.11
+  PloneGlossary   1.3.3 CVS/SVN (UNRELEASED)
+  PloneLanguageTool   1.3
+  PressRoom   1.0.4 (SVN/UNRELEASED)
+  Quills    1.5.0.a3-dev06
+  RichTopic   1.0
+  SimplePortlet   1.0beta1
+  Species   0.1
+  classifieds   0.2
+  dailytheme    1.0
+  fatsyndication    0.1
+  listen    0.1-svn
+  netCorpsTheme   1.0
+  qPloneComments    2.2.0-RC1
+
+
+
+ohtogo
+enter2zope
+
+Line in VirtualHostMonster
+*.bluegoosealliance.org/goose/goose
+
+
+Blue Goose Alliance
+1050 Matador Dr., SE
+Albuquerque, NM 87123-4223
+
+e
+/web/bga/Plone-2.5.5/Python-2.4.4/bin/python
+
+
