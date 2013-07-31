@@ -2,7 +2,35 @@
  build-essential libssl-dev libxml2-dev libxslt1-dev libbz2-dev zlib1g-dev python-dev python-distribute libjpeg62-dev libreadline-gplv2-dev python-imaging wv poppler-utils  libreadline5 libreadline5-dev readline-common
 
 
+Export/import users in and out of Plone
+filed under: cookbook plone
+A dirty quick method of importing and exporting the users (only usernames and passwords) out of Plone, using 2 external methods. Code below, not much else to say.
 
+import cPickle
+
+def export(self):
+    pas = self.acl_users
+    users = pas.source_users
+    passwords = users._user_passwords
+    result = dict(passwords)
+
+    f = open('/tmp/out.blob', 'w')
+    cPickle.dump(result, f)
+    f.close()
+
+    return "done"
+
+def import_users(self):
+    pas = self.acl_users
+    users = pas.source_users
+    f = open('/tmp/out.blob')
+    res = cPickle.load(f)
+    f.close()
+
+    for uid, pwd in res.items():
+        users.addUser(uid, uid, pwd)
+
+    return "done"
 
 
 #####################################################################
@@ -150,8 +178,6 @@ not installed
 
 
 
-ohtogo
-enter2zope
 
 Line in VirtualHostMonster
 *.bluegoosealliance.org/goose/goose
@@ -163,5 +189,188 @@ Albuquerque, NM 87123-4223
 
 e
 /web/bga/Plone-2.5.5/Python-2.4.4/bin/python
+
+
+https://collectivejsonify.readthedocs.org/en/latest/
+
+https://github.com/collective/collective.jsonmigrator
+
+
+
+transaction.savepoint(optimistic=True)
+transaction.commit()
+
+"_datafield_file": {"filename": "Bulletin030.pdf", "data":
+
+
+<div align="center"><strong>NATIONAL WILDLIFE REFUGES....WHERE THE EXTRAORDINARY IS EVERY DAY!</strong></div>
+
+
+
+
+
+
+
+
+IMPORT NOTES
+=========================
+rm'd this file:
+59.json.Bulletin #56
+u'/web/bga/export//59.json.Bulletin #56'
+
+Need to import manually
+
+49 bluuetin list archive.. migrate this.
+
+
+lst = container.getOrdering()
+
+lst.idsInOrder()
+Out[133]:
+[ 'bulletin_75-pdf', 'bulletin-74-pdf', 'bulletin_73-pdf', 'bulletin_72-pdf', 'bulletin_71-pdf', 'bulletin_70-pdf', 'bulletin_69-pdf', 'bulletin-68-pdf', 'bulletin-67-pdf', 'bulletin-2066-pdf', 'bulletin-2065-pdf', 'bulletin-2064-pdf', 'bulletin-63-final-pdf', 'bulletin-62-pdf', 'bulletin-61-pdf', 'bulletin-60-pdf', 'bulletin-59-pdf', 'bulletin-58-pdf', 'bulletin-57-pdf', 'bulletin-55-pdf', 'bulletin-54-pdf', 'bulletin-53-revised-pdf', 'bulletin-53-pdf', 'bulletin-52-pdf', 'bulletin-51-pdf', 'bulletin-50-pdf', 'bulletin-49-pdf', 'bulletin-48-pdf', 'bulletin-47-pdf', 'bulletin-46-pdf', 'bulletin045-pdf', 'bulletin044-pdf', 'bulletin043-pdf', 'bulletin042-pdf', 'bulletin041-pdf', 'bulletin040-pdf', 'bulletin039-pdf', 'bulletin038-pdf', 'bulletin037-pdf', 'bulletin036-pdf', 'bulletin035-pdf', 'bulletin034-pdf', 'bulletin033-pdf', 'bulletin032-pdf', 'bulletin031-pdf', 'bulletin030-pdf', 'bulletin029-pdf', 'bulletin028-pdf', 'bulletin027-pdf', 'bulletin026-pdf', 'bulletin025-pdf', 'bulletin024-pdf', 'bulletin023-pdf', 'bulletin022-pdf', 'bulletin021-pdf', 'bulletin020-pdf', 'bulletin019-pdf', 'bulletin018-pdf', 'bulletin017-pdf', 'bulletin016-pdf', 'bulletin015-pdf', 'bulletin014-pdf', 'bulletin013-pdf', 'bulletin012-pdf', 'bulletin011-pdf', 'bulletin010-pdf', 'bulletin009-pdf', 'bulletin008-pdf', 'bulletin007-pdf', 'bulletin006-pdf', 'bulletin005-pdf' 'bulletin004-pdf', 'bulletin003-pdf', 'bulletin002-pdf', 'bulletin001-pdf', ]
+[ 'bulletin_75-pdf', 'bulletin-74-pdf', 'bulletin_73-pdf', 'bulletin_72-pdf', 'bulletin_71-pdf', 'bulletin_70-pdf', 'bulletin_69-pdf', 'bulletin-68-pdf', 'bulletin-67-pdf', 'bulletin-2066-pdf', 'bulletin-2065-pdf', 'bulletin-2064-pdf', 'bulletin-63-final-pdf', 'bulletin-62-pdf', 'bulletin-61-pdf', 'bulletin-60-pdf', 'bulletin-59-pdf', 'bulletin-58-pdf', 'bulletin-57-pdf', 'bulletin-55-pdf', 'bulletin-54-pdf', 'bulletin-53-revised-pdf', 'bulletin-53-pdf', 'bulletin-52-pdf', 'bulletin-51-pdf', 'bulletin-50-pdf', 'bulletin-49-pdf', 'bulletin-48-pdf', 'bulletin-47-pdf', 'bulletin-46-pdf', 'bulletin045-pdf', 'bulletin044-pdf', 'bulletin043-pdf', 'bulletin042-pdf', 'bulletin041-pdf', 'bulletin040-pdf', 'bulletin039-pdf', 'bulletin038-pdf', 'bulletin037-pdf', 'bulletin036-pdf', 'bulletin035-pdf', 'bulletin034-pdf', 'bulletin033-pdf', 'bulletin032-pdf', 'bulletin031-pdf', 'bulletin030-pdf', 'bulletin029-pdf', 'bulletin028-pdf', 'bulletin027-pdf', 'bulletin026-pdf', 'bulletin025-pdf', 'bulletin024-pdf', 'bulletin023-pdf', 'bulletin022-pdf', 'bulletin021-pdf', 'bulletin020-pdf', 'bulletin019-pdf', 'bulletin018-pdf', 'bulletin017-pdf', 'bulletin016-pdf', 'bulletin015-pdf', 'bulletin014-pdf', 'bulletin013-pdf', 'bulletin012-pdf', 'bulletin011-pdf', 'bulletin010-pdf', 'bulletin009-pdf', 'bulletin008-pdf', 'bulletin007-pdf', 'bulletin006-pdf', 'bulletin005-pdf' 'bulletin004-pdf', 'bulletin003-pdf', 'bulletin002-pdf', 'bulletin001-pdf', ]
+
+<div id="pp-block">
+      	<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+	<input type="hidden" name="cmd" value="_donations">
+	<input type="hidden" name="business" value="Treasurer@bluegoosealliance.org">
+	<input type="hidden" name="lc" value="US">
+	<input type="hidden" name="item_name" value="Blue Goose Alliance">
+	<input type="hidden" name="no_note" value="0">
+	<input type="hidden" name="currency_code" value="USD">
+	<input type="hidden" name="bn"
+	value="PP-DonationsBF:btn_donateCC_LG.gif:NonHostedGuest">
+	<input type="image"
+	src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif"
+	border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+	<img alt="" id="pp-image" border="0"
+	src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+	</form>
+
+<p>&nbsp;</p>
+
+<p>Please donate to the<br>
+Blue Goose Alliance</p>
+    </div>
+Found 37 bad member portraits and removed them. You may optionally delete these members as well using the form below.
+
+aluttrell
+bcarbo
+ckleffman
+dbrick
+dflewellen
+dkeppler
+dwolanin
+easkren
+echapin
+eklipp
+fdemuth
+fshasteen
+gchamberland
+ghochstein
+gsires
+hmainolfi
+imorrow
+jacoff
+jfazenbaker
+jmarshal
+jwalstad
+lporowski
+lyurko
+mspillman
+mstpaul
+ocreach
+qlarusso
+revitt
+rkassner
+rmoura
+sepperson
+sriggenbach
+stunison
+vleoni
+wgoan
+whilborn
+ztheobald
+
+
+Full Name
+Enter full name, e.g. John Smith.
+
+E-mail (Required)
+
+Home page
+The URL for your external home page, if you have one.
+
+Biography
+A short overview of who you are and what you do. Will be displayed on your author page, linked from the items you create.
+
+Location
+Your location - either city and country - or in a company setting, where your office is located.
+
+Portrait
+
+To add or change the portrait: click the "Browse" button; select a picture of yourself. Recommended image size is 75 pixels wide by 100 pixels tall.
+
+  Delete Portrait
+
+
+email
+
+
+fullname
+
+
+home_page
+
+
+location
+
+
+description
+
+
+address
+
+
+city
+
+
+state
+
+
+zip
+
+
+phone
+
+
+from Products.CMFCore.utils import getToolByName
+
+def getMembers(self):
+    plone = getToolByName(self, 'portal_url').getPortalObject()
+    print 'Exporting Members'
+
+    acl_users = plone.acl_users
+    pm = plone.portal_membership
+
+    try:
+        # Plone 2.5
+        passwords = plone.acl_users.source_users._user_passwords
+    except:
+        # Plone 2.1
+        passwords = None
+    dat = ''
+    for username in acl_users.getUserNames():
+
+        user = acl_users.getUserById(username)
+        member = pm.getMemberById(username)
+        #pass = passwords.get(username)
+        fn = member.getProperty('fullname')
+        email = member.getProperty('email')
+        dat+='%s,%s,%s,%s' % (user, member, fn, email,'\n')
+
+    return dat
+
+zopyx.plone.migration
 
 
