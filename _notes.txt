@@ -374,3 +374,42 @@ def getMembers(self):
 zopyx.plone.migration
 
 
+bga_CSV_HEADER = [
+    'username',
+    'password',
+    'roles',
+    'email',
+    'fullname',
+    'location',
+    'description',
+    'home_page',
+    'wysiwyg_editor',
+    'ext_editor',
+    'listed',
+    'address',
+    'city',
+    'state',
+    'zipcode',
+    'phone',
+    'newsletter',
+    'accept',
+    'groups'
+]
+
+bga_MEMBER_PROPERTIES = [
+    'email',
+    'fullname',
+    'location',
+    'description',
+    'home_page',
+    'wysiwyg_editor',
+    'ext_editor',
+    'listed',
+    'address',
+    'city',
+    'state',
+    'zipcode',
+    'phone',
+    'newsletter',
+    'accept'
+]
